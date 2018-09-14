@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NoticeBoard</title>
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/vendor/foundation.min.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left menu-text">
+            <h5>NoticeBoard</h5>
+        </div>
+        <div class="top-bar-right">
+            <div class="button-group">
+                <a class="button">로그인</a>
+                <a class="button">회원가입</a>
+            </div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="notice grid-x grid-margin-x">
+            
+                <h2>
+                    notice-title
+                </h2>
+            
+            <div class="info cell grid-x">
+                <div class="author cell small-6">
+                    <span class="float-left subheader">
+                        notice-author
+                    </span>
+                </div>
+                <div class="date cell small-6">
+                    <span class="float-right subheader">
+                        notice-date
+                    </span>
+                </div>
+            </div>
+            <hr class="cell">
+            <div class="contents cell">
+                notice-contents
+            </div>
+        </div>
+        <hr class="cell">
+        <div class="comments grid-x grid-margin-x">
+            <h3>Comment</h3>
+            <hr class="cell">
+            <div class="comment cell grid-x">
+                <div class="info cell grid-x">
+                    <div class="author cell small-6">
+                        <span class="float-left">
+                            comment-author
+                        </span>
+                    </div>
+                    <div class="date cell small-6">
+                        <span class="float-right subheader">
+                            comment-date
+                        </span>
+                    </div>
+                </div>
+                <div class="contents cell">comment-contents</div>
+            </div>
+            <hr class="cell">
+            <div class="writeComment cell grid-x">
+                <h4 class="cell">WriteComment</h4>
+                <textarea name="comment" id="writeComment" cols="10" rows="5" class="cell small-11">
+                
+                </textarea>
+                <button type="button" class="cell small-1 button">submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
