@@ -39,4 +39,16 @@ public class User {
 	@Column(name="user_image",length=150)
 	private String image;
 	
+	@Builder
+	public User(String id, String password, String firstName, String secondName, LocalDateTime joindate, String phone, String email,String image) {
+		this.id=id;
+		this.password=password;
+		this.firstName=firstName;
+		this.secondName=secondName;
+		this.joindate=joindate;
+		this.email=email;
+		this.phone=phone;
+		this.image=image;
+	}
+	
 }
