@@ -5,8 +5,12 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.data.annotation.Id;
+
+import com.sungmun.NoticeBoard.domain.user.User;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -26,5 +30,8 @@ public class Notice {
 	private LocalDateTime date;
 	@Column(name="notice_count",length=16,nullable=false)
 	private int count;
-	
+
+	@ManyToOne
+	@JoinColumn(name="member_id",nullable=false)
+	private User id;
 }
