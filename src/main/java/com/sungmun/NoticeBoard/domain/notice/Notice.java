@@ -1,6 +1,8 @@
 package com.sungmun.NoticeBoard.domain.notice;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import org.h2.command.Command;
 
+import com.sungmun.NoticeBoard.domain.comment.Comment;
 import com.sungmun.NoticeBoard.domain.user.User;
 
 import lombok.AccessLevel;
@@ -36,4 +41,7 @@ public class Notice {
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="member_id",nullable=false)
 	private User user;
+	
+	@OneToMany(mappedBy="notice",cascade=CascadeType.ALL)
+	private List<Comment> commentList=new ArrayList<>();
 }
