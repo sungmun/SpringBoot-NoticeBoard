@@ -37,7 +37,11 @@ public class Notice {
 	private LocalDateTime date;
 	@Column(name="notice_count",length=16,nullable=false)
 	private int count;
-
+	@Column(name="notice_contents",nullable=false)
+	private String contents;
+	@Column(name="file_name")
+	private String fileName;
+	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="member_id",nullable=false)
 	private User user;
