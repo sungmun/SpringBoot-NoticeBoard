@@ -14,12 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.h2.command.Command;
-
 import com.sungmun.NoticeBoard.domain.comment.Comment;
 import com.sungmun.NoticeBoard.domain.user.User;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -48,4 +47,13 @@ public class Notice {
 	
 	@OneToMany(mappedBy="notice",cascade=CascadeType.ALL)
 	private List<Comment> commentList=new ArrayList<>();
+	
+	@Builder
+	public Notice(String title,int count, String contents,String fileName, User user) {
+		this.contents=contents;
+		this.count=count;
+		this.fileName=fileName;
+		this.title=title;
+		this.user=user;
+	}
 }
