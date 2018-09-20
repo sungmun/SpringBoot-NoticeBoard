@@ -31,7 +31,7 @@ public class Notice {
 	@Column(name="notice_count",length=16,nullable=false)
 	private int count;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="member_id",nullable=false)
-	private User id;
+	private User user;
 }

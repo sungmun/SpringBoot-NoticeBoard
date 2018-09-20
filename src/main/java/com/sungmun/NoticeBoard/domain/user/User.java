@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 	@Id
-	@Column(name="user_id",length = 20)
+	@Column(name="user_id",nullable = false,length = 20)
 	private String id;
 
 	@Column(name="user_password",length = 25, nullable = false)
@@ -42,7 +42,7 @@ public class User {
 	@Column(name="user_image",length=150)
 	private String image;
 	
-	@OneToMany(mappedBy="Notice")
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private List<Notice> Notices=new ArrayList<>();
 	
 	@Builder
