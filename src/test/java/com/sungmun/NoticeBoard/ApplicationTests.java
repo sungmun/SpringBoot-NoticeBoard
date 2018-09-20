@@ -1,4 +1,4 @@
-package com.sungmun.board;
+package com.sungmun.NoticeBoard;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

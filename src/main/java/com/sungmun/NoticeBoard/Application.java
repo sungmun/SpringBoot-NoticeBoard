@@ -1,4 +1,4 @@
-package com.sungmun.board;
+package com.sungmun.NoticeBoard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
