@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.h2.command.Command;
+
+import com.sungmun.NoticeBoard.domain.comment.Comment;
 import com.sungmun.NoticeBoard.domain.notice.Notice;
 
 import lombok.AccessLevel;
@@ -43,7 +46,10 @@ public class User {
 	private String image;
 	
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	private List<Notice> Notices=new ArrayList<>();
+	private List<Notice> noticeList=new ArrayList<>();
+	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	private List<Comment> commentList=new ArrayList<>();
 	
 	@Builder
 	public User(String id, String password, String firstName, String secondName, LocalDateTime joindate, String phone, String email,String image) {
