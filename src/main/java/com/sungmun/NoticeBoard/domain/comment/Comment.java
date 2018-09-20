@@ -15,6 +15,7 @@ import com.sungmun.NoticeBoard.domain.notice.Notice;
 import com.sungmun.NoticeBoard.domain.user.User;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -40,4 +41,11 @@ public class Comment {
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="member_id",nullable=false)
 	private User user;
+	
+	@Builder
+	public Comment(String contents,LocalDateTime day,Long reCommentGroup) {
+		this.contents=contents;
+		this.day=day;
+		this.reCommentGroup=reCommentGroup;
+	}
 }
