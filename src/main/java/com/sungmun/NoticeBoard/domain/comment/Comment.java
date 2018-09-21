@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.sungmun.NoticeBoard.domain.BaseTimeEntity;
 import com.sungmun.NoticeBoard.domain.notice.Notice;
 import com.sungmun.NoticeBoard.domain.user.User;
 
@@ -22,15 +23,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
-public class Comment {
+public class Comment extends BaseTimeEntity{
 	@Id
 	@GeneratedValue
 	@Column(name="comment_num",nullable=false)
 	private Long num;
 	@Column(name="comment_contents",nullable=false)
 	private String contents;
-	@Column(name="comment_day")
-	private LocalDateTime day;
 	@Column(name="re_comment_group")
 	private Long reCommentGroup;
 	
@@ -39,13 +38,14 @@ public class Comment {
 	private Notice notice;
 	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="member_id",nullable=false)
+	@JoinColumn(name="user_id",nullable=false)
 	private User user;
 	
 	@Builder
-	public Comment(String contents,LocalDateTime day,Long reCommentGroup) {
+	public Comment(String contents,Long reCommentGroup,Notice notice,User user) {
 		this.contents=contents;
-		this.day=day;
 		this.reCommentGroup=reCommentGroup;
+		this.notice=notice;
+		this.user=user;
 	}
 }
