@@ -1,4 +1,4 @@
-package com.sungmun.NoticeBoard.service.notice;
+package com.sungmun.NoticeBoard.dto.notice;
 
 import com.sungmun.NoticeBoard.domain.notice.Notice;
 

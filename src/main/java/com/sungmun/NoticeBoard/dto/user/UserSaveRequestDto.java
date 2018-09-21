@@ -1,4 +1,4 @@
-package com.sungmun.NoticeBoard.service.user;
+package com.sungmun.NoticeBoard.dto.user;
 
 import com.sungmun.NoticeBoard.domain.user.User;
 
