@@ -33,12 +33,14 @@
                     </tr>
                 </thead>
                 <tbody class="fade-in">
+                	{{#each notice}}
                     <tr>
-                        <td>1</td> 
-                        <td>test</td> 
-                        <td>tjdans</td>
-                        <td>2018-09-11</td>
+                        <td>{{num}}</td> 
+                        <td>{{title}}</td> 
+                        <td>{{user}}</td>
+                        <td>{{createDate}}</td>
                     </tr>
+                    {{/each}}
                 </tbody>
             </table>
             <ul class="menu align-center-middle">
