@@ -1,5 +1,8 @@
 package com.sungmun.NoticeBoard.web;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +17,8 @@ public class WebController {
 	private NoticeService noticeService;
 	
 	@GetMapping("/")
-	public String main(Model model) {
-		model.addAttribute("notice",noticeService.findAll());
+	public String main(Model model,@PageableDefault(sort= {"num"}, direction=Direction.DESC, size=20) Pageable pageable) {
+		model.addAttribute("notice",noticeService.findAll(pageable));
 		return "index";
 	}
 }
