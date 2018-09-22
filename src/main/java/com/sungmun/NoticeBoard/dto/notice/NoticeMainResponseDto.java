@@ -22,7 +22,7 @@ public class NoticeMainResponseDto {
 		createDate=toStringDateTime(entity.getCreateDate());
 	}
 	private String toStringDateTime(LocalDateTime dateTime) {
-		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-mm-dd HH:mm:ss");
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-mm-dd");
 		return Optional.ofNullable(dateTime)
 				.map(formatter::format)
 				.orElse("");
