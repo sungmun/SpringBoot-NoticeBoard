@@ -30,6 +30,9 @@ var index={
 			
 			page.append(li);
 		});
+	},
+	pageChange:function(href){
+		location=href;
 	}
 };
 index.init();
