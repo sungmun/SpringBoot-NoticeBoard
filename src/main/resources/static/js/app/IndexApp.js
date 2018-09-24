@@ -1,6 +1,10 @@
 var index={
 	init:function(){
 		var _this=this;
+		
+		$('ul li a').on('click',function(){
+			_this.pageChange( '?page='+($(this).html().replace(/[^0-9]/g,'')-1));
+        });
 	},
 	pageRange:function(nowpage,totalpage){
 		var minpage=nowpage-4;
