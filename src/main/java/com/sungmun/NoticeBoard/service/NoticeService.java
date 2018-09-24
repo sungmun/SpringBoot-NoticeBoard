@@ -26,4 +26,9 @@ public class NoticeService {
 				.map(NoticeMainResponseDto::new)
 				.collect(Collectors.toList());
 	}
+	
+	@Transactional(readOnly = true)
+	public int pageCount(Pageable pageable) {
+		return noticeRepository.findAll(pageable).getTotalPages();
+	}
 }
