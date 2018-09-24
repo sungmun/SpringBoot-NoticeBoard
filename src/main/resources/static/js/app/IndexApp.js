@@ -5,6 +5,10 @@ var index={
 		$('ul li a').on('click',function(){
 			_this.pageChange( '?page='+($(this).html().replace(/[^0-9]/g,'')-1));
         });
+		
+		$('tr').on('click',function(){
+			_this.pageChange('/notice?num='+$(this).data('notice'));
+		});
 	},
 	pageRange:function(nowpage,totalpage){
 		var minpage=nowpage-4;
