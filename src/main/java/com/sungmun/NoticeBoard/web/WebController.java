@@ -20,6 +20,7 @@ public class WebController {
 	public String main(Model model,@PageableDefault(sort= {"num"}, direction=Direction.DESC, size=20) Pageable pageable) {
 		model.addAttribute("notice",noticeService.findAll(pageable));
 		model.addAttribute("pagecount",noticeService.pageCount(pageable));
+		model.addAttribute("nowpage",pageable.getPageNumber());
 		return "index";
 	}
 }
