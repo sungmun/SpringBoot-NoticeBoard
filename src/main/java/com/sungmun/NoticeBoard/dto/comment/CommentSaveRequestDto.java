@@ -1,4 +1,4 @@
-package com.sungmun.NoticeBoard.service.comment;
+package com.sungmun.NoticeBoard.dto.comment;
 
 import com.sungmun.NoticeBoard.domain.comment.Comment;
 import com.sungmun.NoticeBoard.domain.notice.Notice;

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NoticeBoard</title>
-    <link rel="stylesheet" href="./css/foundation.min.css">
-    <link rel="stylesheet" href="./css/app.css">
-    <script src="./js/vendor/jquery.js"></script>
-    <script src="./js/vendor/foundation.min.js"></script>
+    <link rel="stylesheet" href="/css/library/foundation.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    
 </head>
 <body>
     <div class="top-bar">
-        <div class="top-bar-title">NoticeBoard</div>
-        <div class="top-bar-right">
-            <button type="button" class="button">로그인</button>
-            <button type="button" class="button">회원가입</button>
-        </div>
+	    <div class="top-bar-left menu-text">
+	        <h5>NoticeBoard</h5>
+	    </div>
+	    <div class="top-bar-right">
+	        <div class="button-group">
+	            <a class="button">로그인</a>
+	            <a class="button">회원가입</a>
+	        </div>
+	    </div>
     </div>
     <div>
         <div class="grid-container">
-            <table class="table-scroll">
+            <table>
                 <thead>
                     <tr>
                         <th width="5%">번호</th>
@@ -29,16 +32,19 @@
                         <th width="10%">날짜</th>
                     </tr>
                 </thead>
-                <tbody class="fade-in">
-                    <tr>
-                        <td>1</td> 
-                        <td>test</td> 
-                        <td>tjdans</td>
-                        <td>2018-09-11</td>
+                <tbody>
+                	{{#each notice}}
+                    <tr data-notice={{num}}>
+                        <td>{{num}}</td> 
+                        <td>{{title}}</td> 
+                        <td>{{user}}</td>
+                        <td>{{createDate}}</td>
                     </tr>
+                    {{/each}}
                 </tbody>
             </table>
-            <ul class="menu align-center-middle">
+            <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{page}}>
+                <!-- 
                 <li class="is-active"><a>1</a></li>
                 <li><a>2</a></li>
                 <li><a>3</a></li>
@@ -49,9 +55,13 @@
                 <li><a>8</a></li>
                 <li><a>9</a></li>
                 <li><a>10</a></li>
+                 -->
             </ul>
         </div>
 
     </div>
+    <script src="/js/library/jquery.js"></script>
+    <script src="/js/library/foundation.min.js"></script>
+    <script src="/js/app/IndexApp.js" ></script>
 </body>
 </html>
