@@ -23,4 +23,9 @@ public class WebController {
 		model.addAttribute("nowpage",pageable.getPageNumber());
 		return "index";
 	}
+	
+	@GetMapping("/notice")
+	public String readNotice(Model model) {
+		return "notice/read";
+	}
 }
