@@ -31,6 +31,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
+	compile 'com.github.jknack:handlebars-helpers:4.0.7',
+            'com.github.jknack:handlebars-jackson2:4.0.7',
+            'com.github.jknack:handlebars-humanize:4.0.7',
+            'com.github.jknack:handlebars-markdown:4.0.7'
 	runtime('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
