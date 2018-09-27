@@ -22,26 +22,18 @@
     </div>
     <div class="grid-container">
         <div class="notice grid-x grid-margin-x">
-            
-                <h2>
-                    notice-title
-                </h2>
-            
+                <h2>{{notice.title}}</h2>
             <div class="info cell grid-x">
                 <div class="author cell small-6">
-                    <span class="float-left subheader">
-                        notice-author
-                    </span>
+                    <span class="float-left subheader">{{notice.user}}</span>
                 </div>
                 <div class="date cell small-6">
-                    <span class="float-right subheader">
-                        notice-date
-                    </span>
+                    <span class="float-right subheader">{{notice.createDate}}</span>
                 </div>
             </div>
             <hr class="cell">
             <div class="contents cell">
-                notice-contents
+                {{notice.contents}}
             </div>
         </div>
         <hr class="cell">
