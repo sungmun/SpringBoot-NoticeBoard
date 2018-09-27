@@ -6,6 +6,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sungmun.NoticeBoard.service.NoticeService;
 
@@ -25,7 +26,8 @@ public class WebController {
 	}
 	
 	@GetMapping("/notice")
-	public String readNotice(Model model) {
+	public String readNotice(Model model, @RequestParam long num) {
+		model.addAttribute("notice", noticeService.findById(num));
 		return "notice/read";
 	}
 }
