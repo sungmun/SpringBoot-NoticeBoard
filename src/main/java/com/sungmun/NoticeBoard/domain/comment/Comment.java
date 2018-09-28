@@ -36,7 +36,7 @@ public class Comment extends BaseTimeEntity{
 	private Notice notice;
 	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id",nullable=false)
+	@JoinColumn(name="member_id",nullable=false)
 	private User user;
 	
 	@Builder
