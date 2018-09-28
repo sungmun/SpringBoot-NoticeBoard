@@ -40,21 +40,25 @@
         <div class="comments grid-x grid-margin-x">
             <h3>Comment</h3>
             <hr class="cell">
-            <div class="comment cell grid-x">
-                <div class="info cell grid-x">
-                    <div class="author cell small-6">
-                        <span class="float-left">
-                            comment-author
-                        </span>
-                    </div>
-                    <div class="date cell small-6">
-                        <span class="float-right subheader">
-                            comment-date
-                        </span>
-                    </div>
-                </div>
-                <div class="contents cell">comment-contents</div>
-            </div>
+            {{#each notice.commentList}}
+	            <div class="comment cell grid-x">
+	                <div class="info cell grid-x">
+	                    <div class="author cell small-6">
+	                        <span class="float-left">
+	                            {{user}}
+	                        </span>
+	                    </div>
+	                    <div class="date cell small-6">
+	                        <span class="float-right subheader">
+	                            {{createDate}}
+	                        </span>
+	                    </div>
+	                </div>
+	                <div class="contents cell">
+	                	{{contents}}
+	                </div>
+	            </div>
+            {{/each}}
             <hr class="cell">
             <div class="writeComment cell grid-x">
                 <h4 class="cell">WriteComment</h4>
