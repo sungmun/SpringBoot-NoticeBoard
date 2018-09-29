@@ -6,13 +6,14 @@ import com.sungmun.NoticeBoard.dto.BaseTimeDto;
 import lombok.Getter;
 
 @Getter
-public class NoticeMainResponseDto extends BaseTimeDto{
+public class NoticeMainResponseDto{
 	private Long num;
 	private String title;
 	private String user;
+	private String createDate;
 	
 	public NoticeMainResponseDto(Notice entity) {
-		super(entity.getCreateDate());
+		this.createDate=BaseTimeDto.toStringLocalDateTime(entity.getCreateDate(), "yyyy-MM-dd");
 		num=entity.getNum();
 		title=entity.getTitle();
 		user=entity.getUser().getId();

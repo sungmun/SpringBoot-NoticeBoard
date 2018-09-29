@@ -11,16 +11,17 @@ import com.sungmun.NoticeBoard.dto.comment.CommentReadResponseDto;
 import lombok.Getter;
 
 @Getter
-public class NoticeReadResponseDto extends BaseTimeDto{
+public class NoticeReadResponseDto{
 	private Long num;
 	private String title;
 	private String contents;
 	private String fileName;
 	private String user;
+	private String createDate;
 	private List<CommentReadResponseDto> commentList=new ArrayList<>();
 	
 	public NoticeReadResponseDto(Notice entity) {
-		super(entity.getCreateDate());
+		this.createDate=BaseTimeDto.toStringLocalDateTime(entity.getCreateDate(), "yyyy-MM-dd");
 		this.num=entity.getNum();
 		this.title=entity.getTitle();
 		this.contents=entity.getContents();
