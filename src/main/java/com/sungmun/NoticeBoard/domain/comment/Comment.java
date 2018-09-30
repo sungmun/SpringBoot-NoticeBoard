@@ -28,8 +28,6 @@ public class Comment extends BaseTimeEntity{
 	private Long num;
 	@Column(name="comment_contents",nullable=false)
 	private String contents;
-	@Column(name="re_comment_group")
-	private Long reCommentGroup;
 	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="notice_id",nullable=false)
