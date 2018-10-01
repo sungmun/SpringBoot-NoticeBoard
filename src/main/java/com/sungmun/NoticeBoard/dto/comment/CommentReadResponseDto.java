@@ -8,7 +8,6 @@ import lombok.Getter;
 @Getter
 public class CommentReadResponseDto {
 	private Long num;
-	private Long reCommentGroup;
 	private String contents;
 	private String user;
 	private String createDate;
@@ -16,7 +15,6 @@ public class CommentReadResponseDto {
 	public CommentReadResponseDto(Comment entity) {
 		this.createDate=BaseTimeDto.toStringLocalDateTime(entity.getCreateDate(), "yyyy-MM-dd");
 		this.num=entity.getNum();
-		this.reCommentGroup=entity.getReCommentGroup();
 		this.contents=entity.getContents();
 		this.user=entity.getUser().getId();
 	}
