@@ -26,17 +26,17 @@ insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTI
 insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTICE_TITLE, MEMBER_ID, NOTICE_COUNT) values (24, now(),now(),'TestContents','Test24','tjdans174',0);
 insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTICE_TITLE, MEMBER_ID, NOTICE_COUNT) values (25, now(),now(),'TestContents','Test25','dkrak174',0);
 insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTICE_TITLE, MEMBER_ID, NOTICE_COUNT) values (26, now(),now(),'TestContents','Test26','tjdans174',0);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (1, now(),now(),'TestContents1','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (2, now(),now(),'TestContents1-1','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (3, now(),now(),'TestContents2','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (4, now(),now(),'TestContents3','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (5, now(),now(),'TestContents4','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (6, now(),now(),'TestContents5','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (7, now(),now(),'TestContents1-1-1','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (8, now(),now(),'TestContents1-2','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (9, now(),now(),'TestContents3-1','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (10, now(),now(),'TestContents6','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (11, now(),now(),'TestContents6-1','tjdans174',26);
-insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents,  MEMBER_ID, notice_id) values (12, now(),now(),'TestContents7','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (1, now(),now(),'TestContents1','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (2, now(),now(),'TestContents1-1','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (3, now(),now(),'TestContents2','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (4, now(),now(),'TestContents3','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (5, now(),now(),'TestContents4','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (6, now(),now(),'TestContents5','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (7, now(),now(),'TestContents1-1-1','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (8, now(),now(),'TestContents1-2','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (9, now(),now(),'TestContents3-1','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (10, now(),now(),'TestContents6','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (11, now(),now(),'TestContents6-1','tjdans174',26);
+insert into comment(comment_num, CREATE_DATE, MODIFIED_DATE, comment_contents, MEMBER_ID, notice_id) values (12, now(),now(),'TestContents7','tjdans174',26);
 
 
