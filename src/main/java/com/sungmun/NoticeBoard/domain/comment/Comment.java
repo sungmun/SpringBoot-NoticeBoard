@@ -40,7 +40,6 @@ public class Comment extends BaseTimeEntity{
 	@Builder
 	public Comment(String contents,Long reCommentGroup,Notice notice,User user) {
 		this.contents=contents;
-		this.reCommentGroup=reCommentGroup;
 		this.notice=notice;
 		this.user=user;
 	}
