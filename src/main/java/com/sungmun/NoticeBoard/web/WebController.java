@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sungmun.NoticeBoard.service.CommentService;
 import com.sungmun.NoticeBoard.service.NoticeService;
 
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class WebController {
 	private NoticeService noticeService;
+	private CommentService commentService;
 	
 	@GetMapping("/")
 	public String main(Model model,@PageableDefault(sort= {"num"}, direction=Direction.DESC, size=20) Pageable pageable) {
@@ -28,6 +30,7 @@ public class WebController {
 	@GetMapping("/notice")
 	public String readNotice(Model model, @RequestParam long num) {
 		model.addAttribute("notice", noticeService.findById(num));
+		model.addAttribute("comment", commentService.findByid(num));
 		return "notice/read";
 	}
 }
