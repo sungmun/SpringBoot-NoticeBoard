@@ -10,8 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.sungmun.NoticeBoard.domain.BaseTimeEntity;
+import com.sungmun.NoticeBoard.domain.member.Member;
 import com.sungmun.NoticeBoard.domain.notice.Notice;
-import com.sungmun.NoticeBoard.domain.user.User;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -35,12 +35,12 @@ public class Comment extends BaseTimeEntity{
 	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="member_id",nullable=false)
-	private User user;
+	private Member member;
 	
 	@Builder
-	public Comment(String contents,Long reCommentGroup,Notice notice,User user) {
+	public Comment(String contents,Long reCommentGroup,Notice notice,Member member) {
 		this.contents=contents;
 		this.notice=notice;
-		this.user=user;
+		this.member=member;
 	}
 }

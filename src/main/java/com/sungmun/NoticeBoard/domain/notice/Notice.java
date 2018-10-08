@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 
 import com.sungmun.NoticeBoard.domain.BaseTimeEntity;
 import com.sungmun.NoticeBoard.domain.comment.Comment;
-import com.sungmun.NoticeBoard.domain.user.User;
+import com.sungmun.NoticeBoard.domain.member.Member;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -41,17 +41,17 @@ public class Notice extends BaseTimeEntity{
 	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="member_id",nullable=false)
-	private User user;
+	private Member member;
 	
 	@OneToMany(mappedBy="notice",cascade=CascadeType.ALL)
 	private List<Comment> commentList=new ArrayList<>();
 	
 	@Builder
-	public Notice(String title,int count, String contents,String fileName, User user) {
+	public Notice(String title,int count, String contents,String fileName, Member member) {
 		this.contents=contents;
 		this.count=count;
 		this.fileName=fileName;
 		this.title=title;
-		this.user=user;
+		this.member=member;
 	}
 }
