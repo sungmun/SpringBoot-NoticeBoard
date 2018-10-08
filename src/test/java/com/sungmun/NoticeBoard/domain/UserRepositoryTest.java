@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sungmun.NoticeBoard.domain.user.User;
-import com.sungmun.NoticeBoard.domain.user.UserRepository;
+import com.sungmun.NoticeBoard.domain.member.Member;
+import com.sungmun.NoticeBoard.domain.member.MemberRepository;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -20,7 +20,7 @@ import java.util.List;
 public class UserRepositoryTest {
 	
 	@Autowired
-	UserRepository userRepository;
+	MemberRepository userRepository;
 	
 	@After
 	public void cleanup() {
@@ -29,7 +29,7 @@ public class UserRepositoryTest {
 	
 	@Test
 	public void 유저추가하기() {
-		User user=User.builder()
+		Member user=Member.builder()
 				.id("tjdans174")
 				.password("dkrak174")
 				.firstName("kang")
@@ -39,7 +39,7 @@ public class UserRepositoryTest {
 				.build();
 		userRepository.save(user);
 		
-		List<User> list=userRepository.findAll();
+		List<Member> list=userRepository.findAll();
 		
 		user=list.get(0);
 		assertThat(user.getId(), is("tjdans174"));

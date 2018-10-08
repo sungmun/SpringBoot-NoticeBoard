@@ -1,4 +1,4 @@
-package com.sungmun.NoticeBoard.domain.user;
+package com.sungmun.NoticeBoard.domain.member;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,32 +21,32 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User extends BaseTimeEntity{
+public class Member extends BaseTimeEntity{
 	@Id
-	@Column(name="user_id",nullable = false,length = 20)
+	@Column(name="member_id",nullable = false,length = 20)
 	private String id;
 
-	@Column(name="user_password",length = 25, nullable = false)
+	@Column(name="member_password",length = 25, nullable = false)
 	private String password;
-	@Column(name="user_firstname",length = 5, nullable = false)
+	@Column(name="member_firstname",length = 5, nullable = false)
 	private String firstName;
-	@Column(name="user_secondname",length = 10, nullable = false)
+	@Column(name="member_secondname",length = 10, nullable = false)
 	private String secondName;
-	@Column(name="user_phone",length = 12, nullable = false)
+	@Column(name="member_phone",length = 12, nullable = false)
 	private String phone;
-	@Column(name="user_email",length = 50, nullable = false)
+	@Column(name="member_email",length = 50, nullable = false)
 	private String email;
-	@Column(name="user_image",length=150)
+	@Column(name="member_image",length=150)
 	private String image;
 	
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="member",cascade=CascadeType.ALL)
 	private List<Notice> noticeList=new ArrayList<>();
 	
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="member",cascade=CascadeType.ALL)
 	private List<Comment> commentList=new ArrayList<>();
 	
 	@Builder
-	public User(String id, String password, String firstName, String secondName, String phone, String email,String image) {
+	public Member(String id, String password, String firstName, String secondName, String phone, String email,String image) {
 		this.id=id;
 		this.password=password;
 		this.firstName=firstName;

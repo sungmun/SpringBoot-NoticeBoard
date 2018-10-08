@@ -1,6 +1,6 @@
-package com.sungmun.NoticeBoard.dto.user;
+package com.sungmun.NoticeBoard.dto.member;
 
-import com.sungmun.NoticeBoard.domain.user.User;
+import com.sungmun.NoticeBoard.domain.member.Member;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserSaveRequestDto {
+public class MemberSaveRequestDto {
 	private String id;
 	private String password;
 	private String firstName;
@@ -18,8 +18,8 @@ public class UserSaveRequestDto {
 	private String email;
 	
 	
-	public User toEntity() {
-		return User.builder()
+	public Member toEntity() {
+		return Member.builder()
 				.id(id)
 				.password(password)
 				.firstName(firstName)

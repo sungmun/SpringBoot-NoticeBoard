@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NoticeBoard</title>
-    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/library/foundation.min.css">
     <link rel="stylesheet" href="../css/app.css">
-    <script src="../js/vendor/jquery.js"></script>
-    <script src="../js/vendor/foundation.min.js"></script>
 </head>
 <body>
     <div class="top-bar">
@@ -23,48 +21,44 @@
         </div>
     </div>
     <div class="grid-container">
-        <div class="notice grid-x grid-margin-x">
-            
-                <h2>
-                    notice-title
-                </h2>
-            
+        <div class="notice grid-x grid-margin-x" data-notice={{notice.num}}>
+                <h2>{{notice.title}}</h2>
             <div class="info cell grid-x">
                 <div class="author cell small-6">
-                    <span class="float-left subheader">
-                        notice-author
-                    </span>
+                    <span class="float-left subheader">{{notice.user}}</span>
                 </div>
                 <div class="date cell small-6">
-                    <span class="float-right subheader">
-                        notice-date
-                    </span>
+                    <span class="float-right subheader">{{notice.createDate}}</span>
                 </div>
             </div>
             <hr class="cell">
             <div class="contents cell">
-                notice-contents
+                {{notice.contents}}
             </div>
         </div>
         <hr class="cell">
         <div class="comments grid-x grid-margin-x">
             <h3>Comment</h3>
             <hr class="cell">
-            <div class="comment cell grid-x">
-                <div class="info cell grid-x">
-                    <div class="author cell small-6">
-                        <span class="float-left">
-                            comment-author
-                        </span>
-                    </div>
-                    <div class="date cell small-6">
-                        <span class="float-right subheader">
-                            comment-date
-                        </span>
-                    </div>
-                </div>
-                <div class="contents cell">comment-contents</div>
-            </div>
+            {{#each comment}}
+	            <div class="comment cell grid-x">
+	                <div class="info cell grid-x">
+	                    <div class="author cell small-6">
+	                        <span class="float-left">
+	                            {{user}}
+	                        </span>
+	                    </div>
+	                    <div class="date cell small-6">
+	                        <span class="float-right subheader">
+	                            {{createDate}}
+	                        </span>
+	                    </div>
+	                </div>
+	                <div class="contents cell">
+	                	{{contents}}
+	                </div>
+	            </div>
+            {{/each}}
             <hr class="cell">
             <div class="writeComment cell grid-x">
                 <h4 class="cell">WriteComment</h4>
@@ -75,5 +69,8 @@
             </div>
         </div>
     </div>
+    <script src="../js/library/jquery.js"></script>
+    <script src="../js/library/foundation.min.js"></script>
+    <script src="../js/app/NoticeReadApp.js"></script>
 </body>
 </html>
