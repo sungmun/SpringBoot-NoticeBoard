@@ -47,4 +47,10 @@ public class WebController {
 		return commentService.findByid(num);
 	}
 	
+	@ResponseBody
+	@GetMapping("/comment/write")
+	public Long saveComment(@RequestBody CommentSaveRequestDto comment) {
+		return commentService.save(comment);
+	}
+
 }
