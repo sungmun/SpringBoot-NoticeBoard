@@ -6,16 +6,21 @@ import com.sungmun.NoticeBoard.dto.BaseTimeDto;
 import lombok.Getter;
 
 @Getter
-public class NoticeMainResponseDto{
+public class NoticeReadResponseDto{
 	private Long num;
 	private String title;
+	private String contents;
+	private String fileName;
 	private String user;
 	private String createDate;
 	
-	public NoticeMainResponseDto(Notice entity) {
+	public NoticeReadResponseDto(Notice entity) {
 		this.createDate=BaseTimeDto.toStringLocalDateTime(entity.getCreateDate(), "yyyy-MM-dd");
-		num=entity.getNum();
-		title=entity.getTitle();
-		user=entity.getUser().getId();
+		this.num=entity.getNum();
+		this.title=entity.getTitle();
+		this.contents=entity.getContents();
+		this.fileName=entity.getFileName();
+		this.user=entity.getUser().getId();
 	}
+	
 }
