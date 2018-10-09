@@ -38,5 +38,6 @@ dependencies {
             'com.github.jknack:handlebars-markdown:4.0.7'
 	runtime('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-security')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
