@@ -1,5 +1,5 @@
-insert into USER (USER_ID, CREATE_DATE, MODIFIED_DATE, USER_EMAIL, USER_FIRSTNAME, USER_PASSWORD, USER_PHONE, USER_SECONDNAME) values ('tjdans174',now(),now(),'tjdans174@naver.com','kang','dkrak174','01041606443','sungmun');
-insert into USER (USER_ID, CREATE_DATE, MODIFIED_DATE, USER_EMAIL, USER_FIRSTNAME, USER_PASSWORD, USER_PHONE, USER_SECONDNAME) values ('dkrak174',now(),now(),'dkrak174@daum.net','kang','tjdans174','01041606443','sungmun');
+insert into MEMBER (MEMBER_ID, CREATE_DATE, MODIFIED_DATE, MEMBER_EMAIL, MEMBER_FIRSTNAME, MEMBER_PASSWORD, MEMBER_PHONE, MEMBER_SECONDNAME) values ('tjdans174',now(),now(),'tjdans174@naver.com','kang','dkrak174','01041606443','sungmun');
+insert into MEMBER (MEMBER_ID, CREATE_DATE, MODIFIED_DATE, MEMBER_EMAIL, MEMBER_FIRSTNAME, MEMBER_PASSWORD, MEMBER_PHONE, MEMBER_SECONDNAME) values ('dkrak174',now(),now(),'dkrak174@daum.net','kang','tjdans174','01041606443','sungmun');
 insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTICE_TITLE, MEMBER_ID, NOTICE_COUNT) values (1, now(),now(),'TestContents','Test1','tjdans174',0);
 insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTICE_TITLE, MEMBER_ID, NOTICE_COUNT) values (2, now(),now(),'TestContents','Test2','tjdans174',0);
 insert into notice(NOTICE_NUM, CREATE_DATE, MODIFIED_DATE, NOTICE_CONTENTS, NOTICE_TITLE, MEMBER_ID, NOTICE_COUNT) values (3, now(),now(),'TestContents','Test3','tjdans174',0);
