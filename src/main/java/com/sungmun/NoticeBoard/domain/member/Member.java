@@ -6,7 +6,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.sungmun.NoticeBoard.domain.BaseTimeEntity;
@@ -28,11 +30,11 @@ public class Member extends BaseTimeEntity{
 
 	@Column(name="member_password",length = 25, nullable = false)
 	private String password;
-	@Column(name="member_firstname",length = 5, nullable = false)
+	@Column(name="member_firstname",length = 10, nullable = false)
 	private String firstName;
-	@Column(name="member_secondname",length = 10, nullable = false)
+	@Column(name="member_secondname",length = 15, nullable = false)
 	private String secondName;
-	@Column(name="member_phone",length = 12, nullable = false)
+	@Column(name="member_phone",length = 15, nullable = false)
 	private String phone;
 	@Column(name="member_email",length = 50, nullable = false)
 	private String email;
@@ -45,8 +47,15 @@ public class Member extends BaseTimeEntity{
 	@OneToMany(mappedBy="member",cascade=CascadeType.ALL)
 	private List<Comment> commentList=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="id")
+	private List<MemberRole> roles;
+	
+	
+	
 	@Builder
-	public Member(String id, String password, String firstName, String secondName, String phone, String email,String image) {
+	public Member(String id, String password, String firstName, String secondName, String phone, String email,String image,List<MemberRole> roles) {
+		
 		this.id=id;
 		this.password=password;
 		this.firstName=firstName;
@@ -54,6 +63,7 @@ public class Member extends BaseTimeEntity{
 		this.email=email;
 		this.phone=phone;
 		this.image=image;
+		this.roles=roles;
 	}
 	
 }
