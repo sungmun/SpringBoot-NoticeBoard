@@ -19,9 +19,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Getter
+@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity{
 	@Id
@@ -30,11 +32,11 @@ public class Member extends BaseTimeEntity{
 
 	@Column(name="member_password",length = 25, nullable = false)
 	private String password;
-	@Column(name="member_firstname",length = 10, nullable = false)
+	@Column(name="member_firstname",length = 15, nullable = false)
 	private String firstName;
-	@Column(name="member_secondname",length = 15, nullable = false)
+	@Column(name="member_secondname",length = 20, nullable = false)
 	private String secondName;
-	@Column(name="member_phone",length = 15, nullable = false)
+	@Column(name="member_phone",length = 30, nullable = false)
 	private String phone;
 	@Column(name="member_email",length = 50, nullable = false)
 	private String email;
