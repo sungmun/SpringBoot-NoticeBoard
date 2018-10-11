@@ -1,6 +1,9 @@
 package com.sungmun.NoticeBoard.dto.member;
 
+import java.util.Arrays;
+
 import com.sungmun.NoticeBoard.domain.member.Member;
+import com.sungmun.NoticeBoard.domain.member.MemberRole;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +19,7 @@ public class MemberSaveRequestDto {
 	private String secondName;
 	private String phone;
 	private String email;
-	
+	private String role;
 	
 	public Member toEntity() {
 		return Member.builder()
@@ -26,6 +29,7 @@ public class MemberSaveRequestDto {
 				.secondName(secondName)
 				.phone(phone)
 				.email(email)
+				.roles(Arrays.asList(new MemberRole(role)))
 				.build();
 	}
 }
