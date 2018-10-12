@@ -8,6 +8,9 @@ spring:
   profiles: local
   datasource:
     data: classpath:data-h2.sql # 시작할때 실행시킬 script
+  devtools:
+        livereload:
+            enabled: true
   jpa:
     show-sql: true
     hibernate:
