@@ -2,6 +2,7 @@ package com.sungmun.NoticeBoard.web;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,6 @@ public class MemberController {
 	
 	@PostMapping("/create")
 	public String create(@RequestBody MemberSaveRequestDto dto) {
-		BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 		service.save(dto);
 		return "redirect:/";
 	}

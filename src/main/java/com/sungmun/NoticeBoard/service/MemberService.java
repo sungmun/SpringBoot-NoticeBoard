@@ -1,5 +1,6 @@
 package com.sungmun.NoticeBoard.service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sungmun.NoticeBoard.domain.member.MemberRepository;
@@ -13,6 +14,8 @@ public class MemberService {
 	private MemberRepository repository;
 	
 	public String save(MemberSaveRequestDto dto) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 		return repository.save(dto.toEntity()).getId();
 	}
 }
