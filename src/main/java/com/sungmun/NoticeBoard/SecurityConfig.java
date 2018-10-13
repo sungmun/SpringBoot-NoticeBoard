@@ -4,7 +4,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -16,7 +15,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
-		.antMatchers("/**").permitAll();
+		.antMatchers("/**").permitAll()
+		.and()
+		.formLogin().loginPage("/login").defaultSuccessUrl("/").usernameParameter("id").passwordParameter("password");
 		
 		http.authorizeRequests().antMatchers("/h2-console/*").permitAll();
 		http.csrf().disable();
