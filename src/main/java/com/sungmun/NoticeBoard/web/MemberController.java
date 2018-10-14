@@ -3,7 +3,6 @@ package com.sungmun.NoticeBoard.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.sungmun.NoticeBoard.dto.member.MemberSaveRequestDto;
 import com.sungmun.NoticeBoard.service.MemberService;
@@ -26,7 +25,8 @@ public class MemberController {
 	}
 
 	@PostMapping("/member/create")
-	public String create(@RequestBody MemberSaveRequestDto dto) {
+	public String create(MemberSaveRequestDto dto) {
+		dto.setRole("BASIC");
 		service.save(dto);
 		return "redirect:/";
 	}
