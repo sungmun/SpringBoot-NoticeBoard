@@ -20,7 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.formLogin().loginPage("/login").defaultSuccessUrl("/").usernameParameter("id").passwordParameter("password");
 		
 		http.authorizeRequests().antMatchers("/h2-console/*").permitAll();
-		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	}
 }
