@@ -14,13 +14,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
-		.antMatchers("/**").permitAll()
+		http.authorizeRequests()
+			.antMatchers("/admin/**")
+			.hasRole("ADMIN").antMatchers("/**").permitAll()
 		.and()
-		.formLogin().loginPage("/login").defaultSuccessUrl("/").usernameParameter("id").passwordParameter("password");
-		
-		http.authorizeRequests().antMatchers("/h2-console/*").permitAll();
+			.formLogin().loginPage("/login")
+			.loginProcessingUrl("/login")
+			.defaultSuccessUrl("/")
+			.failureUrl("/login")
+		.and()
+			.logout();
 		http.headers().frameOptions().disable();
 	}
 }
