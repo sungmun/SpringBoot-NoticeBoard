@@ -1,7 +1,6 @@
 package com.sungmun.NoticeBoard.service;
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,9 +27,10 @@ public class MemberService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-		return Optional.ofNullable(repository.findById(id))
-				.filter(m -> m != null)
-				.map(m -> new SecurityMember(m.get()))
+		return Optional.ofNullable(repository.findById(id)).get()
+				.filter(m -> m!=null)
+				.map(m -> new SecurityMember(m))
 				.get();
+				
 	}
 }

@@ -1,6 +1,7 @@
 package com.sungmun.NoticeBoard.config;
 
-import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -15,6 +16,7 @@ import com.sungmun.NoticeBoard.service.MemberService;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
 	MemberService service;
 
 	@Override
@@ -44,10 +46,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new LoginSuccessHandler("/");
 	}
 
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service).passwordEncoder(passwordEncoder());
 	}
