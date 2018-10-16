@@ -36,8 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.successHandler(successHandler())
 			.failureUrl("/login")
 		.and()
-			.logout();
-
+			.logout()
+			.logoutSuccessUrl("/")
+			.logoutUrl("/logout");
+			
+		
 		http.headers().frameOptions().disable();
 
 	}
