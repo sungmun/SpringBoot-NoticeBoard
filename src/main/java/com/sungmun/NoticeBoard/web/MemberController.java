@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/member")
 public class MemberController {
 	MemberService service;
 
@@ -40,7 +41,7 @@ public class MemberController {
 		return "member/register";
 	}
 
-	@PostMapping("/member/create")
+	@PostMapping("/create")
 	public String create(MemberSaveRequestDto dto) {
 		dto.setRole("BASIC");
 		service.save(dto);

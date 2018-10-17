@@ -4,9 +4,9 @@
 <div class="top-bar-right">
 	<div class="button-group" style="margin-bottom: 0rem;">
 		{{#if SPRING_SECURITY_CONTEXT.authentication}}
-			<a class="button" href="/logout">로그아웃</a> <a class="button" href="/mypage">내 정보</a>
+			<a class="button" href="/member/logout">로그아웃</a> <a class="button" href="/member/update">내 정보</a>
 		{{else}}
-			<a class="button" href="/login">로그인</a> <a class="button" href="/register">회원가입</a>
+			<a class="button" href="/member/login">로그인</a> <a class="button" href="/member/register">회원가입</a>
 		{{/if}}
 	</div>
 </div>
