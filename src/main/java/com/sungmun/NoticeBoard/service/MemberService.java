@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.sungmun.NoticeBoard.domain.member.MemberRepository;
 import com.sungmun.NoticeBoard.dto.member.MemberSaveRequestDto;
+import com.sungmun.NoticeBoard.dto.member.MemberUpdateDto;
 import com.sungmun.NoticeBoard.dto.member.SecurityMember;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +20,12 @@ import lombok.AllArgsConstructor;
 public class MemberService implements UserDetailsService {
 	private MemberRepository repository;
 	
+	public String update(MemberUpdateDto dto) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+		return repository.save(dto.toEntity()).getId();
+	}
+
 	public String save(MemberSaveRequestDto dto) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
