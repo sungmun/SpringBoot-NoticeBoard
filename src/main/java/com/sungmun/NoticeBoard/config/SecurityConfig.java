@@ -14,9 +14,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.sungmun.NoticeBoard.service.LoginSuccessHandler;
 import com.sungmun.NoticeBoard.service.MemberService;
 
+import lombok.AllArgsConstructor;
+
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
 	MemberService service;
 
 	@Override
@@ -30,15 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/admin/**")
 			.hasRole("ADMIN").antMatchers("/**").permitAll()
 		.and()
-			.formLogin().loginPage("/login")
-			.loginProcessingUrl("/login")
+			.formLogin().loginPage("/member/login")
+			.loginProcessingUrl("/member/login")
 			.defaultSuccessUrl("/")
 			.successHandler(successHandler())
-			.failureUrl("/login")
+			.failureUrl("/member/login")
 		.and()
 			.logout()
 			.logoutSuccessUrl("/")
-			.logoutUrl("/logout");
+			.logoutUrl("/member/logout");
 			
 		
 		http.headers().frameOptions().disable();
@@ -49,12 +51,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new LoginSuccessHandler("/");
 	}
 
-	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service).passwordEncoder(passwordEncoder());
 	}
