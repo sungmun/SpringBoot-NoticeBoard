@@ -48,6 +48,12 @@ public class MemberController {
 		return "member/update";
 	}
 	
+	@PostMapping("/update")
+	public String update(MemberUpdateDto dto) {
+		service.update(dto);
+		return "redirect:/";
+	}
+	
 	@GetMapping("/register")
 	public String register() {
 		return "member/register";
