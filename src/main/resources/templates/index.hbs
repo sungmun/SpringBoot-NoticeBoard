@@ -11,15 +11,7 @@
 </head>
 <body>
     <div class="top-bar">
-	    <div class="top-bar-left menu-text">
-	        <h5>NoticeBoard</h5>
-	    </div>
-	    <div class="top-bar-right">
-	        <div class="button-group">
-	            <a class="button">로그인</a>
-	            <a class="button">회원가입</a>
-	        </div>
-	    </div>
+	    {{include "/common/topbar"}}
     </div>
     <div>
         <div class="grid-container">
@@ -43,7 +35,7 @@
                     {{/each}}
                 </tbody>
             </table>
-            <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{page}}>
+            <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{nowpage}}>
                 <!-- 
                 <li class="is-active"><a>1</a></li>
                 <li><a>2</a></li>

@@ -20,7 +20,7 @@ public class NoticeReadResponseDto{
 		this.title=entity.getTitle();
 		this.contents=entity.getContents();
 		this.fileName=entity.getFileName();
-		this.user=entity.getUser().getId();
+		this.user=entity.getMember().getId();
 	}
 	
 }
