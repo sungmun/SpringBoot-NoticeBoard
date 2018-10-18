@@ -1,14 +1,16 @@
 var index={
 	init:function(){
 		var _this=this;
+		_this.pageChangeNum();
 		
-		$('ul li a').on('click',function(){
+		$(document).on('click','ul li a',function(){
 			_this.pageChange( '?page='+($(this).html().replace(/[^0-9]/g,'')-1));
         });
 		
-		$('tr').on('click',function(){
+		$(document).on('click','tr',function(){
 			_this.pageChange('/notice?num='+$(this).data('notice'));
 		});
+		
 	},
 	pageRange:function(nowpage,totalpage){
 		var minpage=nowpage-4;

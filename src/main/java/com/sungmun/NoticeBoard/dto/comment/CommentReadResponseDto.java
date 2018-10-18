@@ -16,6 +16,6 @@ public class CommentReadResponseDto {
 		this.createDate=BaseTimeDto.toStringLocalDateTime(entity.getCreateDate(), "yyyy-MM-dd");
 		this.num=entity.getNum();
 		this.contents=entity.getContents();
-		this.user=entity.getUser().getId();
+		this.user=entity.getMember().getId();
 	}
 }

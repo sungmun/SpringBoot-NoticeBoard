@@ -16,6 +16,6 @@ public class NoticeMainResponseDto{
 		this.createDate=BaseTimeDto.toStringLocalDateTime(entity.getCreateDate(), "yyyy-MM-dd");
 		num=entity.getNum();
 		title=entity.getTitle();
-		user=entity.getUser().getId();
+		user=entity.getMember().getId();
 	}
 }
