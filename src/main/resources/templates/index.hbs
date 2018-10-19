@@ -25,14 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	{{#each notice}}
-                    <tr data-notice={{num}}>
-                        <td>{{num}}</td> 
-                        <td>{{title}}</td> 
-                        <td>{{user}}</td>
-                        <td>{{createDate}}</td>
-                    </tr>
-                    {{/each}}
+                	{{> notice/list}}
                 </tbody>
             </table>
             <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{nowpage}}>
