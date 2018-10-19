@@ -13,14 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CommentSaveRequestDto {
 	private String contents;
-	private Notice notice;
-	private Member member;
+	private Long notice;
+	private String member;
 	
 	public Comment toEntity() {
 		return Comment.builder()
 				.contents(contents)
-				.notice(notice)
-				.member(member)
+				.notice(Notice.builder().num(notice).build())
+				.member(Member.builder().id(member).build())
 				.build();
 	}
 }
