@@ -2,6 +2,13 @@ var index = {
 	init : function() {
 		var _this = this;
 		_this.pageChangeNum();
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(function() {
+			$(document).ajaxSend(function(e, xhr, options) {
+				xhr.setRequestHeader(header, token);
+			});
+		});
 
 		$(document).on('click','ul li a',function() {
 			_this.pageChange('?page='+ ($(this).html().replace(/[^0-9]/g, '') - 1))
