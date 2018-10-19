@@ -1,6 +1,5 @@
 package com.sungmun.NoticeBoard.domain.comment;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,33 +13,31 @@ import com.sungmun.NoticeBoard.domain.member.Member;
 import com.sungmun.NoticeBoard.domain.notice.Notice;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Getter
-@NoArgsConstructor(access=AccessLevel.PROTECTED)
-public class Comment extends BaseTimeEntity{
+@Builder
+@AllArgsConstructor
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Comment extends BaseTimeEntity {
 	@Id
 	@GeneratedValue
-	@Column(name="comment_num",nullable=false)
+	@Column(name = "comment_num", nullable = false)
 	private Long num;
-	@Column(name="comment_contents",nullable=false)
+	@Column(name = "comment_contents", nullable = false)
 	private String contents;
-	
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="notice_id",nullable=false)
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "notice_id", nullable = false)
 	private Notice notice;
-	
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="member_id",nullable=false)
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "member_id", nullable = false)
 	private Member member;
-	
-	@Builder
-	public Comment(String contents,Long reCommentGroup,Notice notice,Member member) {
-		this.contents=contents;
-		this.notice=notice;
-		this.member=member;
-	}
 }

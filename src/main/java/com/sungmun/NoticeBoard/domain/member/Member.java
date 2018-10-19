@@ -1,6 +1,5 @@
 package com.sungmun.NoticeBoard.domain.member;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,13 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 import com.sungmun.NoticeBoard.domain.BaseTimeEntity;
-import com.sungmun.NoticeBoard.domain.comment.Comment;
-import com.sungmun.NoticeBoard.domain.notice.Notice;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +22,8 @@ import lombok.ToString;
 @Entity
 @Getter
 @ToString
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity {
 	@Id
@@ -44,30 +43,8 @@ public class Member extends BaseTimeEntity {
 	@Column(name = "member_image", length = 150)
 	private String image;
 
-	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-	@Transient
-	private List<Notice> noticeList = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-	@Transient
-	private List<Comment> commentList = new ArrayList<>();
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id")
 	private List<MemberRole> roles;
-
-	@Builder
-	public Member(String id, String password, String firstName, String secondName, String phone, String email,
-			String image, List<MemberRole> roles) {
-
-		this.id = id;
-		this.password = password;
-		this.firstName = firstName;
-		this.secondName = secondName;
-		this.email = email;
-		this.phone = phone;
-		this.image = image;
-		this.roles = roles;
-	}
 
 }
