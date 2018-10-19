@@ -7,6 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.github.jknack.handlebars.Handlebars;
+import com.github.jknack.handlebars.Template;
+import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
+import com.github.jknack.handlebars.io.TemplateLoader;
 import com.sungmun.NoticeBoard.service.NoticeService;
 
 import lombok.AllArgsConstructor;
@@ -17,11 +21,20 @@ public class WebController {
 	private NoticeService noticeService;
 
 	@GetMapping("/")
-	public String main(Model model,
-			@PageableDefault(sort = { "num" }, direction = Direction.DESC, size = 20, page = 0) Pageable pageable) {
-		model.addAttribute("notice", noticeService.findAll(pageable));
-		model.addAttribute("pagecount", noticeService.pageCount(pageable));
-		model.addAttribute("nowpage", pageable.getPageNumber());
+	public String main(Model model)
+			throws IOException {
+		TemplateLoader loader = new ClassPathTemplateLoader();
+		loader.setPrefix("/templates");
+		loader.setSuffix(".hbs");
+
+		Handlebars handlebarsEngine = new Handlebars(loader);
+
+		Template listLayer = handlebarsEngine.compile("/notice/list");
+
+		model.addAttribute("listTemplate", listLayer.text());
+		model.addAttribute("notice", noticeService.findAll(PageRequest.of(0, 20, Direction.DESC, "num")));
+		model.addAttribute("pagecount", noticeService.pageCount(PageRequest.of(0, 20, Direction.DESC, "num")));
+		model.addAttribute("nowpage", 0);
 		return "index";
 	}
 
