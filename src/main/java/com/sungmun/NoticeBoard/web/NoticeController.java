@@ -2,14 +2,13 @@ package com.sungmun.NoticeBoard.web;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,7 +17,9 @@ import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
 import com.sungmun.NoticeBoard.dto.comment.CommentReadResponseDto;
+import com.sungmun.NoticeBoard.dto.comment.CommentSaveRequestDto;
 import com.sungmun.NoticeBoard.service.CommentService;
+import com.sungmun.NoticeBoard.service.MemberService;
 import com.sungmun.NoticeBoard.service.NoticeService;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,8 @@ import lombok.AllArgsConstructor;
 public class NoticeController {
 	NoticeService noticeService;
 	CommentService commentService;
-	
+	MemberService memberService;
+
 	@GetMapping("/notice/read")
 	public String read(Model model, @RequestParam long num) throws IOException {
 		TemplateLoader loader = new ClassPathTemplateLoader();
@@ -45,4 +47,18 @@ public class NoticeController {
 		return "/notice/readLayout";
 	}
 
+	@GetMapping("/comment/read")
+	@ResponseBody
+	public List<CommentReadResponseDto> commentRead(@RequestParam long num) {
+		return commentService.findByid(num);
+	}
+
+	@PostMapping("/comment/write")
+	@ResponseBody
+	public List<CommentReadResponseDto> commentWrite(Principal principal,@RequestBody CommentSaveRequestDto dto) {
+		dto.setMember(principal.getName());
+		commentService.save(dto);
+		
+		return commentService.findByid(dto.getNotice());
+	}
 }
