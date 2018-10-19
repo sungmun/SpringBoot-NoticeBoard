@@ -1,6 +1,5 @@
 package com.sungmun.NoticeBoard.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,6 +31,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/admin/**")
 			.hasRole("ADMIN").antMatchers("/**").permitAll()
 		.and()
+			.authorizeRequests()
+			.antMatchers("/member/logout","**/update","**/write")
+			.hasRole("BASIC")
+		.and()
 			.formLogin().loginPage("/member/login")
 			.loginProcessingUrl("/member/login")
 			.defaultSuccessUrl("/")
@@ -41,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 			.logoutSuccessUrl("/")
 			.logoutUrl("/member/logout");
-			
+		
 		
 		http.headers().frameOptions().disable();
 
@@ -50,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationSuccessHandler successHandler() {
 		return new LoginSuccessHandler("/");
 	}
-
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}

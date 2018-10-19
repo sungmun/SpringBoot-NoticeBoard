@@ -32,6 +32,10 @@ public class MemberService implements UserDetailsService {
 		return repository.save(dto.toEntity()).getId();
 	}
 
+	public MemberUpdateDto findById(String id) {
+		return repository.findById(id).map(MemberUpdateDto::new).get();
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 		return Optional.ofNullable(repository.findById(id)).get()
