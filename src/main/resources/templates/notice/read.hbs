@@ -1,4 +1,5 @@
-<div class="notice grid-x grid-margin-x" data-notice={{num}}>
+{{#with notice}}
+<div class="notice grid-x grid-margin-x" data-notice="{{num}}">
 	<h2>{{title}}</h2>
 	<div class="info cell grid-x">
 		<div class="author cell small-6">
@@ -11,3 +12,4 @@
 	<hr class="cell">
 	<div class="contents cell">{{contents}}</div>
 </div>
+{{/with}}
