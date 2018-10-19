@@ -22,9 +22,7 @@ var read={
 			contentType:'application/json; charset=utf-8',
 			data:JSON.stringify(data)
 		}).done(function(data){
-			console.log(data);
 			var eventTemplate=Handlebars.compile($('#comment-template').html());
-			console.log(eventTemplate);
 			$('#comment').html($(eventTemplate({
 				comment:data
 			})));

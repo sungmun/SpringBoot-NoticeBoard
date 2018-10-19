@@ -1,7 +1,6 @@
 var index = {
 	init : function() {
 		var _this = this;
-		_this.pageChangeNum();
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content");
 		$(function() {
@@ -10,8 +9,10 @@ var index = {
 			});
 		});
 
-		$(document).on('click','ul li a',function() {
-			_this.pageChange('?page='+ ($(this).html().replace(/[^0-9]/g, '') - 1))
+		_this.pageChangeNum($('ul').data('nowpage'));
+
+		$(document).on('click', 'ul li a', function() {
+			_this.pageNumClick($(this).html().replace(/[^0-9]/g, '') - 1);
 		});
 
 		$(document).on('click', 'tr', function() {
@@ -19,14 +20,36 @@ var index = {
 		});
 
 	},
-	pageRange : function(nowpage, totalpage) {
+	totalPage : $('ul').data('totalpage'),
+	pageNumClick : function(nowpage) {
+		var data = {
+			page : nowpage
+		};
+
+		$.ajax({
+			url : '/list',
+			type : 'get',
+			dataType : 'json',
+			contentType : 'application/json; charset=utf-8',
+			data : data
+		}).done(function(data) {
+			var eventTemplate = Handlebars.compile($('#list-template').html());
+			$('tbody').html($(eventTemplate({
+				notice : data
+			})));
+			index.pageChangeNum(nowpage);
+		}).fail(function(error) {
+			console.log(error);
+		});
+	},
+	pageRange : function(nowpage) {
 		var minpage = nowpage - 4;
 		var maxpage = nowpage + 4;
 
 		if (minpage <= 0)
 			minpage = 1;
-		if (maxpage >= totalpage)
-			maxpage = totalpage;
+		if (maxpage >= this.totalPage)
+			maxpage = this.totalPage;
 
 		var range = [];
 		for (; minpage <= maxpage; minpage++) {
@@ -35,24 +58,21 @@ var index = {
 
 		return range;
 	},
-	pageChangeNum : function() {
+	pageChangeNum : function(nowpage) {
 		var page = $('ul');
-		var nowpage = page.data('nowpage') + 1;
-
+		nowpage = nowpage + 1;
 		$('ul li').remove();
 
-		this.pageRange(nowpage, page.data('totalpage')).forEach(
-				function(value, index) {
-					var li = $('<li/>');
+		this.pageRange(nowpage).forEach(function(value, index) {
+			var li = $('<li/>');
 
-					if (value == nowpage)
-						li.addClass('is-active');
-					li.append($('<a/>', {
-						text : value
-					}));
-
-					page.append(li);
-				});
+			if (value == nowpage)
+				li.addClass('is-active');
+			li.append($('<a/>', {
+				text : value
+			}));
+			page.append(li);
+		});
 	},
 	pageChange : function(href) {
 		location = href;
