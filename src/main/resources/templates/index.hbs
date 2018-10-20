@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta id="_csrf" name="_csrf" content="{{_csrf.token}}">
+	<meta id="_csrf_header" name="_csrf_header" content="{{_csrf.headerName}}">
     <title>NoticeBoard</title>
     <link rel="stylesheet" href="/css/library/foundation.min.css">
     <link rel="stylesheet" href="/css/app.css">
-    
 </head>
 <body>
     <div class="top-bar">
@@ -25,14 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	{{#each notice}}
-                    <tr data-notice={{num}}>
-                        <td>{{num}}</td> 
-                        <td>{{title}}</td> 
-                        <td>{{user}}</td>
-                        <td>{{createDate}}</td>
-                    </tr>
-                    {{/each}}
+                	{{> notice/list}}
                 </tbody>
             </table>
             <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{nowpage}}>
@@ -52,8 +46,12 @@
         </div>
 
     </div>
+    <script id="list-template" type="text/x-handlebars-template">
+        {{{listTemplate}}}
+  	</script>
     <script src="/js/library/jquery.js"></script>
     <script src="/js/library/foundation.min.js"></script>
+    <script src="../js/library/handlebars.js"></script>
     <script src="/js/app/IndexApp.js" ></script>
 </body>
 </html>
