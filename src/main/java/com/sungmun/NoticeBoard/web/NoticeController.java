@@ -47,6 +47,11 @@ public class NoticeController {
 		return "/notice/readLayout";
 	}
 
+	@GetMapping("/notice/write")
+	public String write() {
+		return "notice/write";
+	}
+	
 	@GetMapping("/comment/read")
 	@ResponseBody
 	public List<CommentReadResponseDto> commentRead(@RequestParam long num) {
