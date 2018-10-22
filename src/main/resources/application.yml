@@ -6,16 +6,22 @@ spring:
 ---
 spring:
   profiles: local
+  application:
+    name: NoticeBoard
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:8080/NoticeBoardSpring
+    username: root
+    password: root
   devtools:
         livereload:
             enabled: true
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
-  h2:
-    console:
-      enabled: true
+      ddl-auto: update
 handlebars:
   expose-request-attributes: true
   expose-session-attributes: true
+  
+  
