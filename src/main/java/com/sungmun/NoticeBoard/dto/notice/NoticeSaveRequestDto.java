@@ -15,11 +15,12 @@ public class NoticeSaveRequestDto {
 	private int count;
 	private String member;
 	private String contents;
-	
+	private String fileName;
 	public Notice toEntity() {
 		return Notice.builder()
 				.title(title)
 				.count(count)
+				.fileName(fileName)
 				.member(Member.builder().id(member).build())
 				.contents(contents)
 				.build();
