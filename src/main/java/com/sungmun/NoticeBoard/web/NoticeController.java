@@ -18,6 +18,7 @@ import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
 import com.sungmun.NoticeBoard.dto.comment.CommentReadResponseDto;
 import com.sungmun.NoticeBoard.dto.comment.CommentSaveRequestDto;
+import com.sungmun.NoticeBoard.dto.notice.NoticeSaveRequestDto;
 import com.sungmun.NoticeBoard.service.CommentService;
 import com.sungmun.NoticeBoard.service.MemberService;
 import com.sungmun.NoticeBoard.service.NoticeService;
@@ -51,7 +52,14 @@ public class NoticeController {
 	public String write() {
 		return "notice/write";
 	}
-	
+
+	@PostMapping("/notice/write")
+	public String saveNotice(Principal principal, NoticeSaveRequestDto dto) {
+		dto.setMember(principal.getName());
+		noticeService.save(dto);
+		return "notice/write";
+	}
+
 	@GetMapping("/comment/read")
 	@ResponseBody
 	public List<CommentReadResponseDto> commentRead(@RequestParam long num) {
@@ -60,10 +68,10 @@ public class NoticeController {
 
 	@PostMapping("/comment/write")
 	@ResponseBody
-	public List<CommentReadResponseDto> commentWrite(Principal principal,@RequestBody CommentSaveRequestDto dto) {
+	public List<CommentReadResponseDto> commentWrite(Principal principal, @RequestBody CommentSaveRequestDto dto) {
 		dto.setMember(principal.getName());
 		commentService.save(dto);
-		
+
 		return commentService.findByid(dto.getNotice());
 	}
 }
