@@ -28,6 +28,8 @@ repositories {
 ext['hibernate.version'] = '5.2.11.Final' //추가
 
 dependencies {
+	compile("org.springframework.boot:spring-boot-starter-jdbc:2.0.1.RELEASE")
+  	compile("mysql:mysql-connector-java:5.1.46")
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
@@ -36,7 +38,6 @@ dependencies {
             'com.github.jknack:handlebars-jackson2:4.0.7',
             'com.github.jknack:handlebars-humanize:4.0.7',
             'com.github.jknack:handlebars-markdown:4.0.7'
-	runtime('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	
