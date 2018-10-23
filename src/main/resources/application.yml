@@ -14,14 +14,12 @@ spring:
     username: root
     password: root
   devtools:
-        livereload:
-            enabled: true
+    livereload:
+      enabled: true
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 handlebars:
   expose-request-attributes: true
   expose-session-attributes: true
-  
-  
