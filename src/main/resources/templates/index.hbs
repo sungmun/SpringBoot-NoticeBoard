@@ -28,20 +28,16 @@
                 <tbody>
                 	{{> notice/list}}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <a class="button float-right" href="/notice/write">글쓰기</a>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
             <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{nowpage}}>
-                <!-- 
-                <li class="is-active"><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-                <li><a>6</a></li>
-                <li><a>7</a></li>
-                <li><a>8</a></li>
-                <li><a>9</a></li>
-                <li><a>10</a></li>
-                 -->
+               
             </ul>
         </div>
 
@@ -51,7 +47,7 @@
   	</script>
     <script src="/js/library/jquery.js"></script>
     <script src="/js/library/foundation.min.js"></script>
-    <script src="../js/library/handlebars.js"></script>
+    <script src="/js/library/handlebars.js"></script>
     <script src="/js/app/IndexApp.js" ></script>
 </body>
 </html>
