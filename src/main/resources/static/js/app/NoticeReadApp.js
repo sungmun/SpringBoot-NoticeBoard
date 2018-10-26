@@ -8,6 +8,8 @@ var read={
 		        xhr.setRequestHeader(header, token);
 		    });
 		});
+		
+		_this.commentRead();
 	},
 	commentSave:function(){
 		var data={
@@ -39,13 +41,15 @@ var read={
 		
 		$.ajax({
 			url:'/comment/read',
-			type:'post',
+			type:'get',
 			data: data,
 			dataType:'json',
 			contentType:'application/json; charset=utf-8',
 		}).done(function(data){
 			var eventTemplate=Handlebars.compile($('#comment-template').html());
-			$('#comment').html($(eventTemplate(data)));
+			$('#comment').html($(eventTemplate({
+				comment:data
+			})));
 		}).fail(function(error){
 			console.log(error);
 		});
