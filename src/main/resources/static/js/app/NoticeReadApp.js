@@ -8,13 +8,16 @@ var read={
 		        xhr.setRequestHeader(header, token);
 		    });
 		});
-		
+
 		_this.commentRead();
 	},
-	commentSave:function(){
-		var data={
-				notice:$('.notice').data('notice'),
-				contents:$('#writeComment').val(),
+	noticeUpdate : function() {
+		location.href="/notice/update/?num="+$('.notice').data('notice');
+	},
+	commentSave : function() {
+		var data = {
+			notice : $('.notice').data('notice'),
+			contents : $('#writeComment').val(),
 		}
 		$('#writeComment').val('');
 		$.ajax({
@@ -25,32 +28,27 @@ var read={
 			data:JSON.stringify(data)
 		}).done(function(data){
 			var eventTemplate=Handlebars.compile($('#comment-template').html());
-			$('#comment').html($(eventTemplate({
-				comment:data
-			})));
-			
+			$('#comment').html($(eventTemplate({comment:data})));
 			alert('Comment가 추가 되었습니다.');
 		}).fail(function(error){
 			console.log(error);
 		});
 	},
-	commentRead:function(){
-		var data={
-			num:$('.notice').data('notice')
+	commentRead : function() {
+		var data = {
+			num : $('.notice').data('notice')
 		};
-		
+
 		$.ajax({
-			url:'/comment/read',
-			type:'get',
-			data: data,
-			dataType:'json',
-			contentType:'application/json; charset=utf-8',
-		}).done(function(data){
-			var eventTemplate=Handlebars.compile($('#comment-template').html());
-			$('#comment').html($(eventTemplate({
-				comment:data
-			})));
-		}).fail(function(error){
+			url : '/comment/read',
+			type : 'get',
+			data : data,
+			dataType : 'json',
+			contentType : 'application/json; charset=utf-8',
+		}).done(function(data) {
+			var eventTemplate = Handlebars.compile($('#comment-template').html());
+			$('#comment').html($(eventTemplate({comment : data})));
+		}).fail(function(error) {
 			console.log(error);
 		});
 	}
