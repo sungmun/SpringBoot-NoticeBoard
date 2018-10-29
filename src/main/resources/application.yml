@@ -6,18 +6,20 @@ spring:
 ---
 spring:
   profiles: local
+  application:
+    name: NoticeBoard
   datasource:
-    data: classpath:data-h2.sql # 시작할때 실행시킬 script
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:8080/NoticeBoardSpring
+    username: root
+    password: root
   devtools:
-        livereload:
-            enabled: true
+    livereload:
+      enabled: true
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
-  h2:
-    console:
-      enabled: true
 handlebars:
   expose-request-attributes: true
   expose-session-attributes: true

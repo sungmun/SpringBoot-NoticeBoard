@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta id="_csrf" name="_csrf" content="{{_csrf.token}}">
+	<meta id="_csrf_header" name="_csrf_header" content="{{_csrf.headerName}}">
     <title>NoticeBoard</title>
     <link rel="stylesheet" href="/css/library/foundation.min.css">
     <link rel="stylesheet" href="/css/app.css">
-    
 </head>
 <body>
     <div class="top-bar">
@@ -25,35 +26,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                	{{#each notice}}
-                    <tr data-notice={{num}}>
-                        <td>{{num}}</td> 
-                        <td>{{title}}</td> 
-                        <td>{{user}}</td>
-                        <td>{{createDate}}</td>
-                    </tr>
-                    {{/each}}
+                	{{> notice/list}}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <a class="button float-right" href="/notice/write">글쓰기</a>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
             <ul class="menu align-center-middle" data-totalpage={{pagecount}} data-nowpage={{nowpage}}>
-                <!-- 
-                <li class="is-active"><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-                <li><a>6</a></li>
-                <li><a>7</a></li>
-                <li><a>8</a></li>
-                <li><a>9</a></li>
-                <li><a>10</a></li>
-                 -->
+               
             </ul>
         </div>
 
     </div>
+    <script id="list-template" type="text/x-handlebars-template">
+        {{{listTemplate}}}
+  	</script>
     <script src="/js/library/jquery.js"></script>
     <script src="/js/library/foundation.min.js"></script>
+    <script src="/js/library/handlebars.js"></script>
     <script src="/js/app/IndexApp.js" ></script>
 </body>
 </html>
