@@ -48,6 +48,12 @@ public class NoticeController {
 		return "/notice/readLayout";
 	}
 
+	@GetMapping("/update")
+	public String update(Model model, @RequestParam long num) {
+		model.addAttribute("notice", noticeService.findById(num));
+		return "/notice/update";
+	}
+
 	@GetMapping("/write")
 	public String write() {
 		return "notice/write";
