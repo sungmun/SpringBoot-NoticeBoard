@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class NoticeSaveRequestDto {
+	private long num;
 	private String title;
 	private int count;
 	private String member;
@@ -18,6 +19,7 @@ public class NoticeSaveRequestDto {
 	private String fileName;
 	public Notice toEntity() {
 		return Notice.builder()
+				.num(num)
 				.title(title)
 				.count(count)
 				.fileName(fileName)

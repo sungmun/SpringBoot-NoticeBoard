@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sungmun.NoticeBoard.dto.comment.CommentReadResponseDto;
 import com.sungmun.NoticeBoard.dto.comment.CommentSaveRequestDto;
 import com.sungmun.NoticeBoard.service.CommentService;
-import com.sungmun.NoticeBoard.service.NoticeService;
 
 import lombok.AllArgsConstructor;
 

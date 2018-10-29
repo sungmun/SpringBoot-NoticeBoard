@@ -15,6 +15,12 @@
 	<div class="grid-container">
 		{{> notice/read}}
 		<hr class="cell">
+		{{#if author}}
+		<div class="cell">
+			<button class="button" id="update" onclick="read.noticeUpdate();">수정</button> 
+		</div>
+		<hr class="cell">
+		{{/if}}
 		<div class="comments grid-x grid-margin-x">
 			<h3>Comment</h3>
 			<hr class="cell">

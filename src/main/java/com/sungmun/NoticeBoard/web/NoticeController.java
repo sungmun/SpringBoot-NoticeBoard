@@ -15,6 +15,7 @@ import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
+import com.sungmun.NoticeBoard.dto.notice.NoticeReadResponseDto;
 import com.sungmun.NoticeBoard.dto.notice.NoticeSaveRequestDto;
 import com.sungmun.NoticeBoard.service.NoticeService;
 
@@ -27,7 +28,7 @@ public class NoticeController {
 	NoticeService noticeService;
 
 	@GetMapping("/read")
-	public String read(Model model, @RequestParam long num) throws IOException {
+	public String read(Model model, Principal principal, @RequestParam long num) throws IOException {
 		TemplateLoader loader = new ClassPathTemplateLoader();
 		loader.setPrefix("/templates");
 		loader.setSuffix(".hbs");
@@ -35,10 +36,22 @@ public class NoticeController {
 		Handlebars handlebarsEngine = new Handlebars(loader);
 
 		Template commentLayer = handlebarsEngine.compile("/notice/comment/read");
-
 		model.addAttribute("commentTemplate", commentLayer.text());
-		model.addAttribute("notice", noticeService.findById(num));
+
+		NoticeReadResponseDto read = noticeService.findById(num);
+		model.addAttribute("notice", read);
+
+		if (principal != null && principal.getName().equals(read.getUser())) {
+			model.addAttribute("author", true);
+		}
+
 		return "/notice/readLayout";
+	}
+
+	@GetMapping("/update")
+	public String update(Model model, @RequestParam long num) {
+		model.addAttribute("notice", noticeService.findById(num));
+		return "/notice/update";
 	}
 
 	@GetMapping("/write")
@@ -47,10 +60,10 @@ public class NoticeController {
 	}
 
 	@PostMapping("/write")
-	public String save(NoticeSaveRequestDto dto,Principal principal,RedirectAttributes model) {
+	public String save(NoticeSaveRequestDto dto, Principal principal, RedirectAttributes model) {
 		dto.setMember(principal.getName());
 		model.addAttribute("num", noticeService.save(dto));
 		return "redirect:/notice/read";
 	}
-	
+
 }
