@@ -1,5 +1,6 @@
 package com.sungmun.NoticeBoard.service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,7 +33,7 @@ public class MemberService implements UserDetailsService {
 		return repository.save(dto.toEntity()).getId();
 	}
 
-	public MemberUpdateDto findById(String id) {
+	public MemberUpdateDto findById(String id) throws NoSuchElementException {
 		return repository.findById(id).map(MemberUpdateDto::new).get();
 	}
 
