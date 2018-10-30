@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NoticeBoard</title>
-    <link rel="stylesheet" href="../css/library/foundation.min.css">
-    <link rel="stylesheet" href="../css/app.css">
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta id="_csrf" name="_csrf" content="{{_csrf.token}}">
+<meta id="_csrf_header" name="_csrf_header" content="{{_csrf.headerName}}">
+<title>NoticeBoard</title>
+<link rel="stylesheet" href="../css/library/foundation.min.css">
+<link rel="stylesheet" href="../css/app.css">
+
 </head>
 <body>
-    <div class="top-bar">
-        {{> common/topbar}}
-    </div>
-    <div class="grid-container grid-x">
-        <div class="cell">
-            <h3 class="text-center">Register</h3>
-        </div>
-        <form action="/member/create" method="POST" class="cell grid-x small-6 float-center">
-        	<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
-            <div class="cell">
-                <label for="id">
-                    Id
-                    <input type="text" name="id" id="id" placeholder="ID">
-                </label>
-            </div>
-            <div class="cell">
-                <label for="password">
-                    Password
-                    <input type="password" name="password" id="password" placeholder="Password">
-                </label>
-            </div>
-            <!-- 
+	<div class="top-bar">{{> common/topbar}}</div>
+	<div class="grid-container grid-x">
+		<div class="cell">
+			<h3 class="text-center">Register</h3>
+		</div>
+		<form action="/member/create" method="POST"
+			class="cell grid-x small-6 float-center">
+			<input type="hidden" name="{{_csrf.parameterName}}"
+				value="{{_csrf.token}}">
+			<div class="cell ">
+				<label for="id">Id
+					<div class="grid-x grid-margin-x">
+						<input type="text" class="cell small-9" name="id" id="id" placeholder="ID">
+						<button type="button" class="cell auto button" id="check" onclick="register.isIdCheck()">Check</button>
+					</div>
+				</label>
+			</div>
+			<div class="cell">
+				<label for="password"> Password <input type="password"
+					name="password" id="password" placeholder="Password">
+				</label>
+			</div>
+			<!-- 
             <div class="cell">
                 <label for="rePassword">
                     RePassword
@@ -39,39 +42,39 @@
                 </label>
             </div>
              -->
-            <div class="cell"> 
-                <label for="name">
-                    Name
-                    <div class="cell grid-x">
-                        <div class="cell small-6 grid-x">
-                            <div class="cell small-11">
-                                <input type="text" name="firstName" id="firstName" placeholder="firstName">
-                            </div>
-                        </div>
-                        <div class="cell small-6">    
-                            <input type="text" name="secondName" id="secondName" placeholder="secondName">
-                        </div>
-                    </div>
-                </label>
-            </div>
-            <div class="cell">
-                <label for="email">
-                    Email
-                    <input type="email" name="email" id="email" placeholder="Email">
-                </label>
-            </div>
-            <div class="cell">
-                <label for="phone">
-                    Phone
-                    <input type="tel" name="phone" id="phone" placeholder="PhoneNumber">
-                </label>
-            </div>
-            <div class="cell">
-                <button type="submit" class="button float-center">Register</button>
-            </div>
-        </form>
-    </div>
-    <script src="../js/library/jquery.js"></script>
-    <script src="../js/library/foundation.min.js"></script>
+			<div class="cell">
+				<label for="name"> Name
+					<div class="cell grid-x">
+						<div class="cell small-6 grid-x">
+							<div class="cell small-11">
+								<input type="text" name="firstName" id="firstName"
+									placeholder="firstName">
+							</div>
+						</div>
+						<div class="cell small-6">
+							<input type="text" name="secondName" id="secondName"
+								placeholder="secondName">
+						</div>
+					</div>
+				</label>
+			</div>
+			<div class="cell">
+				<label for="email"> Email <input type="email" name="email"
+					id="email" placeholder="Email">
+				</label>
+			</div>
+			<div class="cell">
+				<label for="phone"> Phone <input type="tel" name="phone"
+					id="phone" placeholder="PhoneNumber">
+				</label>
+			</div>
+			<div class="cell">
+				<button type="submit" class="button float-center">Register</button>
+			</div>
+		</form>
+	</div>
+	<script src="../js/library/jquery.js"></script>
+	<script src="../js/library/foundation.min.js"></script>
+	<script src="../js/app/MemberRegister.js"></script>
 </body>
 </html>
